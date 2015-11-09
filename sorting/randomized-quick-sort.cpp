@@ -1,3 +1,10 @@
+/*
+	author: Satyajith
+	algorithm: randomized quick sort
+
+	complexity: O (n log(n)), average case performance
+				O (n^2), worst case
+*/
 #include <iostream>
 #include <algorithm>
 #include <iterator>
