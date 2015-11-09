@@ -18,7 +18,7 @@ using namespace std;
 #define DEBUG cout << "DEBUG" << endl
 #define NEWLINE cout << endl
 
-void quick_sort(vector<int>, 
+void quick_sort(vector<int> *, 
 	vector<int>::iterator, 
 	vector<int>::iterator);
 
@@ -27,19 +27,19 @@ int main(int argc, char* argv[]) {
 	srand(time(NULL));
 
 	int arr[] = {21, 3,8,2,13,1,9,4,7,6, 5,11,18};
-	vector<int> vec(arr, arr + sizeof(arr)/sizeof(int));
+	vector<int> *vec = new vector<int> (arr, arr + sizeof(arr)/sizeof(int));
 	ostream_iterator<int> output(cout, " ");
 
-	copy(vec.begin(), vec.end(), output);
-	quick_sort(vec, vec.begin(), vec.end());
+	copy(vec->begin(), vec->end(), output);
+	quick_sort(vec, vec->begin(), vec->end());
 	NEWLINE;
-	copy(vec.begin(), vec.end(), output);
+	copy(vec->begin(), vec->end(), output);
 	
 	NEWLINE;
 	return 0;
 }
 
-void quick_sort(vector<int> x, 
+void quick_sort(vector<int> *x, 
 	vector<int>::iterator start, 
 	vector<int>::iterator end) {
 
