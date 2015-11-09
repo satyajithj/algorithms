@@ -19,19 +19,19 @@ using namespace std;
 #define NEWLINE cout << endl
 
 void quick_sort(vector<int> *, 
-	vector<int>::iterator, 
-	vector<int>::iterator);
+	int ,int );
 
 int main(int argc, char* argv[]) {
 
 	srand(time(NULL));
 
-	int arr[] = {21, 3,8,2,13,1,9,4,7,6, 5,11,18};
+	int arr[] = {21,3,8,2,13,64,1,9,4,7,6, 5,11,18};
+	// int arr[] = {3,8,2,1,4,7,6,5};
 	vector<int> *vec = new vector<int> (arr, arr + sizeof(arr)/sizeof(int));
 	ostream_iterator<int> output(cout, " ");
 
 	copy(vec->begin(), vec->end(), output);
-	quick_sort(vec, vec->begin(), vec->end());
+	quick_sort(vec, 0, vec->size());
 	NEWLINE;
 	copy(vec->begin(), vec->end(), output);
 	
@@ -39,27 +39,26 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
-void quick_sort(vector<int> *x, 
-	vector<int>::iterator start, 
-	vector<int>::iterator end) {
+void quick_sort(vector<int> *x, int s, int e) {
 
-	int size = end - start;
-	if (size <= 2) {
-		if(*(end - 1) < *start && size > 0)
-			swap(*(end - 1), *start);
+	int size = e-s;
+	// base case
+	if (size-1 < 2) {
+		if((*x)[e-1] < (*x)[s] && size > 0)
+			swap((*x)[e-1], (*x)[s]);
 		return;
 	}
 
-	swap(*(start + rand() % size), *(start));
-	vector<int>::iterator i = start;
-	vector<int>::iterator j = i + 1;
+	// random pivot
+	swap((*x)[s + rand() % size], (*x)[s]);
 
-	for ( ; i != end; i++)
-		if (*i < *start)
-			swap(*i, *start);
+	int i,j;
+	for (i = s+1, j = i; i < e; i++)
+		if ((*x)[i] < (*x)[s])
+			swap((*x)[i], (*x)[j++]);
 
-	swap(*(j-1), *start);
+	swap((*x)[j-1], (*x)[s]);
 
-	quick_sort(x, start, j-1);	// left partition
-	quick_sort(x, j, end);	// right partition
+	quick_sort(x, s, j-1);
+	quick_sort(x, j, e);	// right partition
 }
