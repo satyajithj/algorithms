@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 void merge_sort(vector<int> *x, int s, int e) {
 
 	int size = (e-s);
-	cout << s << " " << e << " " << size << endl; 
+	cout << s << " " << e << " " << size << endl;
 
 	// base case
 	if (size <= 2) {
