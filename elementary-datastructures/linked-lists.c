@@ -1,6 +1,6 @@
 /*
 	author: Satyajith
-	
+
 	data-structure: singly linked-lists
 
 	operations: search, insert, delete
@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
 
 	int l_size = 0;
 	int x;
-
+	
 	char choice = '\0';
 
 	while (choice != 'q' && choice != 'Q') {

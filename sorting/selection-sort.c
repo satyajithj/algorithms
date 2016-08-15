@@ -2,12 +2,10 @@
 	author: Satyajith
 	algorithm: selection sort
 
-	complexity: O(n^2)
+	time complexity: O(n^2)
 */
 
 #include <stdio.h>
-
-#define NEWLINE printf("\n");
 
 void selection_sort(int[], int);
 void print_array(int[], int);
@@ -25,7 +23,6 @@ int main(int argc, char const *argv[])
 	printf("\n%s: ", "sorted array");
 	print_array(arr, 12);
 
-	NEWLINE;
 	return 0;
 }
 
@@ -45,7 +42,7 @@ void selection_sort(int arr[], int n) {
 
 	for (int i = 0; i < n; ++i)
 	{	min_index = i;
-		
+
 		for (int j = i+1; j < n; ++j)
 			if (arr[j] < arr[min_index])
 				min_index = j;

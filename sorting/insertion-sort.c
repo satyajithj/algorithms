@@ -2,7 +2,7 @@
 	author: Satyajith
 	algorithm: insertion sort
 
-	complexity: O(n^2)
+	time complexity: O(n^2)
 */
 
 #include <stdio.h>
