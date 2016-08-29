@@ -1,11 +1,11 @@
 /*
-    author: Satyajith
+author: Satyajith
 
-    algorithm: vertex-2-coloring check using BFS
+algorithm: vertex-2-coloring check using BFS
 
-    time complexity: O(n+m)
+time complexity: O(n+m)
 
-    run command: $ gcc vertex-2-coloring-BFS.c ../elementary-datastructures/queue.c graph-basic.c
+run command: $ gcc vertex-2-coloring-BFS.c ../elementary-datastructures/queue.c graph-basic.c
 */
 
 #include <stdio.h>
@@ -30,92 +30,93 @@ COLOR color[MAX_V+1];
 
 int main(int argc, char const *argv[]) {
 
-  graph *g = malloc(sizeof(graph));
-  read_graph_file(g, "8-c-u-bip.txt", false);
+	graph *g = malloc(sizeof(graph));
+	read_graph_file(g, "8-c-u-bip.txt", false);
 
-  for (size_t i = 1; i <= g->nvertices; i++)
-    processed[i] = discovered[i] = false;
+	for (size_t i = 1; i <= g->nvertices; i++)
+	processed[i] = discovered[i] = false;
 
-  bool is_2_color = two_color(g);
+	bool is_2_color = two_color(g);
 
-  if (is_2_color)
-    printf("\n\n%s\n", "g is a vertex 2-colorable graph (is bipartite)");
-  else
-    printf("\n\n%s\n", "g is NOT a vertex 2-colorable graph (is NOT bipartite)");
+	if (is_2_color)
+	printf("\n\n%s\n", "g is a vertex 2-colorable graph (is bipartite)");
+	else
+	printf("\n\n%s\n", "g is NOT a vertex 2-colorable graph (is NOT bipartite)");
 
-  return 0;
+	return 0;
 }
 
 COLOR complement(COLOR c) {
-  if (c == WHITE) return (BLACK);
-  if (c == BLACK) return (WHITE);
+	if (c == WHITE) return (BLACK);
+	if (c == BLACK) return (WHITE);
 
-  return (UNCOLORED);
+	return (UNCOLORED);
 }
 
 // check for two coloring of a graph
 bool two_color(graph *g) {
 
-  size_t i;
-  for (i = 1; i <= g->nvertices; i++)
-    color[i] = UNCOLORED;
+	size_t i;
+	for (i = 1; i <= g->nvertices; i++)
+	color[i] = UNCOLORED;
 
-  bool is_2_color = true;
+	bool is_2_color = true;
 
-  for (i = 1; i <= g->nvertices; i++) {
-    if (discovered[i] == false) {
-      color[i] = WHITE;
-      is_2_color = bfs(g, i);
-      if (!is_2_color)
-        return false;
-    }
-  }
-  return true;
+	for (i = 1; i <= g->nvertices; i++) {
+		if (discovered[i] == false) {
+			color[i] = WHITE;
+			is_2_color = bfs(g, i);
+			if (!is_2_color)
+			return false;
+		}
+	}
+	return true;
 }
 
 // process visited edge
 bool process_edge(int x, int y) {
 
-  if (color[x] == color[y])
-    return false;
+	if (color[x] == color[y]) {
+		return false;
+	}
 
-  color[y] = complement(color[x]);
-  return true;
+	color[y] = complement(color[x]);
+	return true;
 }
 
 // bfs routine
 bool bfs(graph *g, int start) {
 
-  queue q;            // queue of vertices to visit
-  int v;              // current vertex
-  int y;              // successor vertex
-  edgenode *temp_e;   // pointer to edge
+	queue q;            // queue of vertices to visit
+	int v;              // current vertex
+	int y;              // successor vertex
+	edgenode *temp_e;   // pointer to edge
 
-  init_queue(&q);
-  enqueue(&q, start);         // add start vertex to the queue
-  discovered[start] = true;
+	init_queue(&q);
+	enqueue(&q, start);         // add start vertex to the queue
+	discovered[start] = true;
 
-  while (!is_empty(&q)) {
+	while (!is_empty(&q)) {
 
-    v = dequeue(&q);             // get element from queue
-    processed[v] = true;         // update status flag processed
-    temp_e = g->edges[v];        // get first incident edge
+		v = dequeue(&q);             // get element from queue
+		processed[v] = true;         // update status flag processed
+		temp_e = g->edges[v];        // get first incident edge
 
-    // process all adjacent vertices
-    while (temp_e != NULL) {
-      y = temp_e->y;
+		// process all adjacent vertices
+		while (temp_e != NULL) {
+			y = temp_e->y;
 
-      if (processed[y] == false || g->directed) {
-        if (!process_edge(v, y))                    // if not bipartite, return false
-          return false;
-      }
+			if (processed[y] == false || g->directed) {
+				if (!process_edge(v, y))                    // if not bipartite, return false
+				return false;
+			}
 
-      if (discovered[y] == false){
-        enqueue(&q, y);
-        discovered[y] = true;
-      }
-      temp_e = temp_e->next;  // next edge in list adjacent to v
-    }
-  }
-  return true;
+			if (discovered[y] == false){
+				enqueue(&q, y);
+				discovered[y] = true;
+			}
+			temp_e = temp_e->next;  // next edge in list adjacent to v
+		}
+	}
+	return true;
 }

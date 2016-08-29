@@ -10,22 +10,13 @@
 
 void merge_sort(int[], int, int);		//	merge sort routine
 void merge(int[], int, int);			//	merge routine
-void print_array(int[], int);
 void swap(int *, int *);				// swap elements
 
 int main(int argc, char const *argv[]) {
 
 	int n = 13;
 	int arr[] = {21, 3, 8, 2, 13, 1, 9, 4, 67, 7, 6, 5, 11};
-
-	printf("%s: ", "original array");
-	print_array(arr, n);
-
 	merge_sort(arr, 0, n-1);		// call to merge sort
-
-	printf("\n%s: ", "sorted array");
-	print_array(arr, n);
-
 	return 0;
 }
 
@@ -44,7 +35,7 @@ void merge(int arr[], int s, int e) {
 	for (size_t i = 0; i < buf_size_2; i++)		// copy second half to buffer_2
 		buffer_2[i] = arr[s + buf_size_1 + i];
 
-	size_t i = 0, j = 0, k = s;					// merge until one buffer is traversed
+	size_t i = 0, j = 0, k = s;				// merge until one buffer is traversed
 	while( i != buf_size_1 && j != buf_size_2) {
 		if (buffer_1[i] < buffer_2[j])
 			arr[k++] = buffer_1[i++];
@@ -76,11 +67,6 @@ void merge_sort(int arr[], int s, int e) {
 	merge_sort(arr, s, (s+e)/2);
 	merge_sort(arr, (s+e)/2 + 1, e);
 	merge(arr, s, e);
-}
-
-void print_array(int arr[], int n) {
-	for (int i = 0; i < n; ++i)
-		printf("%d ", arr[i]);
 }
 
 void swap(int *a, int *b) {

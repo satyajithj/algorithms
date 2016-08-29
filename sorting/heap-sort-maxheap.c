@@ -36,7 +36,7 @@ int main(int argc, char const *argv[]) {
   int arr[] = {21, 3, 8, 2, 13, 67, 1, 9, 4, 7, 6, 5};
   char choice = '\0';
 
-  priority_queue *q = malloc(sizeof(priority_queue));
+  priority_queue *q = (priority_queue *) malloc(sizeof(priority_queue));
 
   printf("%s: ", "initial array");
   print_array(arr, 0, n);
@@ -101,7 +101,7 @@ void print_menu() {
 
 // method to print an entire array
 void print_array(int arr[], int s, int e) {
-  for (size_t i = s; i < e; i++)
+  for (int i = s; i < e; i++)
     printf("%d ", arr[i]);
 }
 
@@ -111,7 +111,7 @@ void heap_sort(int arr[], int n) {
 	priority_queue q;
 	make_heap(&q, arr, n);
 
-	for (size_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 		arr[i] = extract_max(&q);
 }
 
@@ -121,7 +121,7 @@ void bubble_down(priority_queue *q, int x) {
 	int child_index = start_child_index(x);
 	int max_index = x;
 
-	for (size_t i = 0; i <= 1; i++) {
+	for (int i = 0; i <= 1; i++) {
 		if ((child_index + i) <= q->n)						// a check on the queue size
 			if (q->Q[max_index] < q->Q[child_index+i])		// in a max-heap if the node is less than the child
 				max_index = child_index +i;							// change index to max value
@@ -155,10 +155,10 @@ void make_heap(priority_queue *q, int arr[], int n) {
 	q->n = n;
 	q->Q[0] = -1;
 
-	for (size_t i = 1; i <= n; i++)
+	for (int i = 1; i <= n; i++)
 		q->Q[i] = arr[i-1];
 
-	for (size_t i = q->n; i > 0; i--)
+	for (int i = q->n; i > 0; i--)
 		bubble_down(q, i);
 }
 

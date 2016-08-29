@@ -13,7 +13,7 @@ void initialize_graph(graph *g, bool directed) {
 	for (i = 1; i <= MAX_V; i++)	g->degree[i] = 0;
 	for (i = 1; i <= MAX_V; i++)	g->edges[i] = NULL;
 
-  printf("%s\n", "-- graph initialization complete");
+  printf("%s", "-- graph initialization complete");
 }
 
 // read graph info. num vertices, edges and insert edges one by one
