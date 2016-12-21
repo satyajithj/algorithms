@@ -1,9 +1,9 @@
 /**
- *	@author	Satyajith
+ *	author:	satyajith
  *
  *	optimal routine to simultaneously determine min and max from
  *	a set of elements; uses (3*floor(n/2)) comparisons rather than
- *	the straight forward 2 comparisons every element 
+ *	the straight forward method of 2 comparisons every element 
  */
 
 #include <stdio.h>

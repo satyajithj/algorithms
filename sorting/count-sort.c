@@ -1,9 +1,9 @@
 /**
- * 	@author Satyajith
- *
- * 	Count Sort
- *  - runs in O(n) time
- *  assumption-> range of the integers is known in advance
+ * 	author: satyajith
+ * 	algorithm: count sort
+ * 	time complexity: O(n)
+ *  
+ *  assumption: range of the integers is known in advance
  */
 
 #include <stdio.h>
@@ -25,13 +25,7 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 
-/**
- * print the given array 
- *
- * @param  A  the integer array
- * @param  s  start index
- * @param  e  end index
- */
+// print the array X from index s to e
 void print_array(int* X, int s, int e) {
 
 	printf("\n");
@@ -39,11 +33,7 @@ void print_array(int* X, int s, int e) {
 		printf("%d ", X[i]);
 }
 
-/**
- * count sort algorithm
- *
- * @param  A  the integer array
- */
+// count sort routine
 void count_sort(int* A, int* B) {
 
 	int C[K+1], i;

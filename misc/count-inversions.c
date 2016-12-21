@@ -1,18 +1,13 @@
-/*
-	author:	satyajith
-
-	description: counting inversions - an inversion is a pair of places of a sequence
-				where the elements on these places are out of their natural order.
-				-- the problem is solved by modifying merge sort
-
-	time-complexity: theta(n lg(n))
-	
-*/
+/**
+ * 	author:	satyajith
+ * 	algorithm: inversion counting
+ * 	time complexity: theta(n lg(n))
+ */
 
 #include <stdio.h>
 
-int count_inv(int[], int, int);		//	merge sort routine
-int merge(int[], int, int);			//	merge routine
+int count_inv(int[], int, int);			//	merge sort routine
+int merge(int[], int, int);				//	merge routine
 void swap(int *, int *);				// swap elements
 
 int main(int argc, char const *argv[]) {
@@ -31,6 +26,7 @@ int merge(int arr[], int s, int e) {
 
 	const int buf_size_2 = size/2;				// the order of these two statements matter, because
 	const int buf_size_1 = size - buf_size_2;	// in merge-sort() the split is ceil(size/2) followed by
+	
 	// floor(size/2) and not the other way around ...
 	int buffer_1[buf_size_1];
 	int buffer_2[buf_size_2];
@@ -40,7 +36,7 @@ int merge(int arr[], int s, int e) {
 	for (int i = 0; i < buf_size_2; i++)		// copy second half to buffer_2
 		buffer_2[i] = arr[s + buf_size_1 + i];
 
-	int i = 0, j = 0, k = s;				// merge until one buffer is traversed
+	int i = 0, j = 0, k = s;					// merge until one buffer is traversed
 	int inv_count = 0;
 	while( i != buf_size_1 && j != buf_size_2) {
 		if (buffer_1[i] < buffer_2[j]) {
@@ -72,7 +68,7 @@ int count_inv(int arr[], int s, int e) {
 	if (size <= 1) {
 		if (arr[e] < arr[s]) {
 			swap(&arr[e], &arr[s]);
-			return 1;				// an inversion if 1st element greater than the second at base case
+			return 1;							// an inversion if 1st element greater than the second at base case
 		}
 		return 0;
 	}

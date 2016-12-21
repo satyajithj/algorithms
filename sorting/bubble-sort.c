@@ -1,9 +1,8 @@
-/*
-author: Satyajith
-algorithm: bubble sort
-
-time complexity: O(n^2)
-*/
+/**
+ * 	author: Satyajith
+ * 	algorithm: bubble sort
+ * 	time complexity: O(n^2)
+ */
 
 #include <stdio.h>
 

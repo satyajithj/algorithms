@@ -10,6 +10,7 @@ int main(int argc, char const *argv[]) {
 
   int n = 12;
   int arr[] = {21, 3, 8, 2, 13, 67, 1, 9, 4, 7, 6, 5};
+  
   qsort(arr, n, sizeof(int), cmp_func);					// call to qsort
   return 0;
 }

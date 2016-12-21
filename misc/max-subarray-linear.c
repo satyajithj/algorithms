@@ -1,11 +1,8 @@
-/*
-	author: satyajith
-
-	description: determining the maximum subarray in linear time
-				(Kadane's Algorithm)
-
-	time-complexity:	theta(n)
-*/
+/**
+ *	author: satyajith
+ *	program: maximum subarray problem (Kadane's algorithm)
+ *	time complexity:	theta(n)
+ */
 
 #include <stdio.h>
 #include <limits.h>
@@ -21,6 +18,7 @@ int main(int argc, char const *argv[]) {
 	return 0;
 }
 
+// linear time max subarray routine
 void find_max_subarray(int arr[], int n) {
 	int l_index = 0, r_index = 0;
 	int max_sum = INT_MIN;

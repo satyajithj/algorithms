@@ -1,9 +1,8 @@
-/*
-	author: Satyajith
-	algorithm: insertion sort
-
-	time complexity: O(n^2)
-*/
+/**
+ * 	author: Satyajith
+ * 	algorithm: insertion sort
+ * 	time complexity: O(n^2)
+ */
 
 #include <stdio.h>
 
@@ -13,6 +12,7 @@ int main(int argc, char const *argv[])
 {
 	int n = 12;
 	int arr[] = {21, 3, 8, 2, 13, 67, 1, 9, 4, 7, 6, 5};
+
 	insertion_sort(arr, n);
 	return 0;
 }

@@ -1,14 +1,13 @@
-/*
-	author: Satyajith
-	algorithm: selection sort
-
-	time complexity: O(n^2)
-*/
+/**
+ * 	author: Satyajith
+ * 	algorithm: selection sort
+ * 	time complexity: O(n^2)
+ */
 
 #include <stdio.h>
 
 void selection_sort(int[], int);
-void swap(int&, int&);
+void swap(int*, int*);
 
 int main(int argc, char const *argv[])
 {
@@ -18,10 +17,11 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 
-void swap(int& a, int& b) {
-	int t = a;
-	a = b;
-	b = t;
+// swap the integers pointed at a and b
+void swap(int* a, int* b) {
+	int t = *a;
+	*a = *b;
+	*b = t;
 }
 
 void selection_sort(int arr[], int n) {
@@ -34,6 +34,6 @@ void selection_sort(int arr[], int n) {
 			if (arr[j] < arr[min_index])
 				min_index = j;
 
-		swap(arr[min_index], arr[i]);	// swap the minimum and arr[i]
+		swap(&arr[min_index], &arr[i]);			// swap the minimum and arr[i]
 	}
 }

@@ -1,15 +1,18 @@
 /**
- * 	@author Satyajith
- * 	
- * 	Radix Sort
+ * 	author: satyajith
+ * 	algorithm: radix sort
+ * 	time complexity: O(d*(n+k))	
+ * 		d	-	digits
+ * 		n	-	numbers
+ * 		k	-	digit range
  */
 
 #include <stdio.h>
 #include <math.h>
 
-#define	N	7		// total numbers
-#define	K	9		// digit range
-#define	D	3		// digits
+#define	N	7			// total numbers
+#define	K	9			// digit range
+#define	D	3			// digits
 
 #define	DEBUG(str, i)	printf("DEBUG: %s - %d\n", str, i)
 
@@ -28,13 +31,7 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 
-/**
- * print the given array 
- *
- * @param  A  the integer array
- * @param  s  start index
- * @param  e  end index
- */
+// print the array X from index s to e
 void print_array(int* X, int s, int e) {
 
 	printf("\n");
@@ -42,12 +39,7 @@ void print_array(int* X, int s, int e) {
 		printf("%d ", X[i]);
 }
 
-/**
- * radix sort method
- *
- * @param  A  original array
- * @param  B  output array
- */
+// radix sort routine
 void radix_sort(int *A, int* B) {
 
 	int i;
@@ -60,11 +52,7 @@ void radix_sort(int *A, int* B) {
 	}
 }
 
-/**
- * count sort on a digit algorithm
- *
- * @param  A  the integer array
- */
+// count sort routine to run on each place (units, tens, ...)
 void count_sort_digit(int* A, int* B, int d) {
 
 	int C[K+1], i, temp = 0;

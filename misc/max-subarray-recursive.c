@@ -1,9 +1,8 @@
-/*
-	author: satyajith
-
-	description: a recursive solution to the maximum subarray problem
-	time-complexity = theta(n lg(n))
-*/
+/**
+ *	author: satyajith
+ *	algorithm: maximum subarray (recursive)
+ *	time complexity: theta(n lg(n))
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
